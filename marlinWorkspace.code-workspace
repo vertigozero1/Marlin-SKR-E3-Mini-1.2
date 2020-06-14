@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "Marlin-2.0.x-SKR-Mini-E3-V1.2",
+			"path": "..\\BIGTREETECH-SKR-mini-E3-master\\firmware\\V1.2\\Marlin-2.0.x-SKR-Mini-E3-V1.2"
+		}
+	],
+	"settings": {
+		"terminal.integrated.env.windows": {
+			"PATH": "C:\\Users\\J\\.platformio\\penv\\Scripts;C:\\Users\\J\\.platformio\\penv;C:\\Python38\\Scripts\\;C:\\Python38\\;C:\\Python37\\Scripts\\;C:\\Python37\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\dotnet\\;C:\\Program Files\\LLVM\\bin;C:\\Users\\J\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\J\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Salesforce CLI\\bin;C:\\Users\\J\\AppData\\Local\\atom\\bin;C:\\Program Files (x86)\\FAHClient;C:\\Python38\\Scripts\\;C:\\Python38\\;C:\\Python37\\Scripts\\;C:\\Python37\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\dotnet\\;C:\\Program Files\\LLVM\\bin;C:\\Users\\J\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\J\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Salesforce CLI\\bin;C:\\Users\\J\\AppData\\Local\\atom\\bin;C:\\Program Files (x86)\\FAHClient",
+			"PLATFORMIO_CALLER": "vscode"
+		}
+	}
+}
