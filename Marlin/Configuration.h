@@ -492,7 +492,7 @@
   //#define DEFAULT_Kp 28.06
   //#define DEFAULT_Ki 2.17
   //#define DEFAULT_Kd 90.55
-  
+
   // Ultimaker
   //#define DEFAULT_Kp 22.2
   //#define DEFAULT_Ki 1.08
@@ -740,7 +740,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 103 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 799.68 }
 
 /**
  * Default Max Feed Rate (mm/s)
