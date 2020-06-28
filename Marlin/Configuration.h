@@ -483,10 +483,16 @@
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
+  // Custom Calibrated Values for 24v E3D Titan Aero
+  #define DEFAULT_Kp 29.75
+  #define DEFAULT_Ki 2.91
+  #define DEFAULT_Kd 76.16
+
   // Creality Ender-3
-  #define DEFAULT_Kp 28.06
-  #define DEFAULT_Ki 2.17
-  #define DEFAULT_Kd 90.55
+  //#define DEFAULT_Kp 28.06
+  //#define DEFAULT_Ki 2.17
+  //#define DEFAULT_Kd 90.55
+  
   // Ultimaker
   //#define DEFAULT_Kp 22.2
   //#define DEFAULT_Ki 1.08
