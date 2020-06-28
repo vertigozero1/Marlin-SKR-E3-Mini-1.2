@@ -22,7 +22,7 @@
 
 #include "../inc/MarlinConfig.h"
 
-#if HAS_TRINAMIC
+#if HAS_TRINAMIC_CONFIG
 
 #include "tmc_util.h"
 #include "../MarlinCore.h"
@@ -63,9 +63,9 @@
            , is_stall:1
            , is_stealth:1
            , is_standstill:1
-          #if HAS_STALLGUARD
-           , sg_result_reasonable:1
-          #endif
+           #if HAS_STALLGUARD
+             , sg_result_reasonable:1
+           #endif
          #endif
       ;
     #if ENABLED(TMC_DEBUG)
@@ -169,9 +169,7 @@
           data.is_stealth = TEST(ds, STEALTH_bp);
           data.is_standstill = TEST(ds, STST_bp);
         #endif
-        #if HAS_STALLGUARD
-          data.sg_result_reasonable = false;
-        #endif
+        TERN_(HAS_STALLGUARD, data.sg_result_reasonable = false);
       #endif
       return data;
     }
@@ -213,9 +211,7 @@
       SERIAL_PRINTLN(data.drv_status, HEX);
       if (data.is_ot) SERIAL_ECHOLNPGM("overtemperature");
       if (data.is_s2g) SERIAL_ECHOLNPGM("coil short circuit");
-      #if ENABLED(TMC_DEBUG)
-        tmc_report_all(true, true, true, true);
-      #endif
+      TERN_(TMC_DEBUG, tmc_report_all(true, true, true, true));
       kill(PSTR("Driver error"));
     }
   #endif
@@ -446,9 +442,7 @@
         (void)monitor_tmc_driver(stepperE7, need_update_error_counters, need_debug_reporting);
       #endif
 
-      #if ENABLED(TMC_DEBUG)
-        if (need_debug_reporting) SERIAL_EOL();
-      #endif
+      if (TERN0(TMC_DEBUG, need_debug_reporting)) SERIAL_EOL();
     }
   }
 
@@ -723,13 +717,13 @@
     SERIAL_CHAR('\t');
     switch (i) {
       case TMC_DRV_CODES:     st.printLabel();  break;
-      case TMC_STST:          if (st.stst())         SERIAL_CHAR('*'); break;
-      case TMC_OLB:           if (st.olb())          SERIAL_CHAR('*'); break;
-      case TMC_OLA:           if (st.ola())          SERIAL_CHAR('*'); break;
-      case TMC_S2GB:          if (st.s2gb())         SERIAL_CHAR('*'); break;
-      case TMC_S2GA:          if (st.s2ga())         SERIAL_CHAR('*'); break;
-      case TMC_DRV_OTPW:      if (st.otpw())         SERIAL_CHAR('*'); break;
-      case TMC_OT:            if (st.ot())           SERIAL_CHAR('*'); break;
+      case TMC_STST:          if (!st.stst())   SERIAL_CHAR('*'); break;
+      case TMC_OLB:           if (st.olb())     SERIAL_CHAR('*'); break;
+      case TMC_OLA:           if (st.ola())     SERIAL_CHAR('*'); break;
+      case TMC_S2GB:          if (st.s2gb())    SERIAL_CHAR('*'); break;
+      case TMC_S2GA:          if (st.s2ga())    SERIAL_CHAR('*'); break;
+      case TMC_DRV_OTPW:      if (st.otpw())    SERIAL_CHAR('*'); break;
+      case TMC_OT:            if (st.ot())      SERIAL_CHAR('*'); break;
       case TMC_DRV_STATUS_HEX: {
         const uint32_t drv_status = st.DRV_STATUS();
         SERIAL_CHAR('\t');
@@ -954,7 +948,7 @@
     static void tmc_get_ic_registers(TMC2208Stepper, const TMC_get_registers_enum) { SERIAL_CHAR('\t'); }
   #endif
 
-  #if HAS_TRINAMIC
+  #if HAS_TRINAMIC_CONFIG
     template<class TMC>
     static void tmc_get_registers(TMC &st, const TMC_get_registers_enum i) {
       switch (i) {
@@ -1096,8 +1090,11 @@
   }
 
   bool tmc_enable_stallguard(TMC2209Stepper &st) {
+    const bool stealthchop_was_enabled = !st.en_spreadCycle();
+
     st.TCOOLTHRS(0xFFFFF);
-    return !st.en_spreadCycle();
+    st.en_spreadCycle(false);
+    return stealthchop_was_enabled;
   }
   void tmc_disable_stallguard(TMC2209Stepper &st, const bool restore_stealth) {
     st.en_spreadCycle(!restore_stealth);
@@ -1251,7 +1248,7 @@ void test_tmc_connection(const bool test_x, const bool test_y, const bool test_z
     #endif
   }
 
-  if (axis_connection) ui.set_status_P(GET_TEXT(MSG_ERROR_TMC));
+  if (axis_connection) LCD_MESSAGEPGM(MSG_ERROR_TMC);
 }
 
-#endif // HAS_TRINAMIC
+#endif // HAS_TRINAMIC_CONFIG
