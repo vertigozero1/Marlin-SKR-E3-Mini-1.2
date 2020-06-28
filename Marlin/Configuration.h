@@ -854,7 +854,7 @@
  *      - normally-open switches to 5V and D32.
  *
  */
-//#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default, used PC14 for v1.2
+#define Z_MIN_PROBE_PIN PC14 // Pin 32 is the RAMPS default, used PC14 for v1.2
 
 /**
  * Probe Type
